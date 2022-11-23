@@ -19,6 +19,11 @@ android {
             useSupportLibrary true
         }
         resValue 'bool', "IS_HIDDEN_AMITY_LOG", "true"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        buildConfigField "String", "API_KEY", "${properties.getProperty('DISCOVER_AMITY_APIKEY')}"
     }
 
     buildTypes {
